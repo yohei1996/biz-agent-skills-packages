@@ -1,0 +1,30 @@
+{
+  "name": "@nishitsujiyouhei/nanobanana",
+  "version": "1.0.0",
+  "description": "Gemini Pro image generation CLI - High quality image generation with 4K support",
+  "main": "src/index.js",
+  "bin": {
+    "nanobanana": "./bin/nanobanana.js"
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\"",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [
+    "gemini",
+    "image-generation",
+    "ai",
+    "cli",
+    "4k"
+  ],
+  "author": "nishitsujiyouhei",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nishitsujiyouhei/biz-agent-skills-packages",
+    "directory": "packages/nanobanana"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
