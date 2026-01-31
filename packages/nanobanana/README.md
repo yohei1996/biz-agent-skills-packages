@@ -1,57 +1,70 @@
-# @nishitsujiyouhei/nanobanana
+# @yohei1996/nanobanana
 
-🍌 Nano Banana - Gemini Pro Image Generation CLI
+🍌 Nano Banana - Gemini Pro画像生成 CLI & Claude Codeスキル
 
-High-quality image generation powered by Google's Gemini Pro with 4K support.
+Gemini Proを使用した高品質画像生成（4K対応）
 
-## Installation
+## インストール
 
-```bash
-npm install -g @nishitsujiyouhei/nanobanana
-```
-
-Or use directly with npx:
+### スキルとしてインストール（推奨）
 
 ```bash
-npx @nishitsujiyouhei/nanobanana "A cat playing piano"
+# プロジェクトディレクトリで実行
+npx @yohei1996/nanobanana install
 ```
 
-## Setup
+これで `.claude/skills/nanobanana/` にスキルがインストールされます。
 
-Set your Gemini API key:
+### グローバルインストール
+
+```bash
+npm install -g @yohei1996/nanobanana
+```
+
+## セットアップ
+
+Gemini APIキーを設定:
 
 ```bash
 export GEMINI_API_KEY=your-api-key
 ```
 
-## Usage
+または VSCode/Cursor設定で `bizAgent-task-kanban.geminiApiKey` を設定。
 
-```bash
-# Basic usage
-nanobanana "A cat playing piano in watercolor style"
+## 使い方
 
-# With 4K resolution
-nanobanana "Landscape photo" --resolution 4k
+### Claude Codeスキルとして使用
 
-# With aspect ratio
-nanobanana "Logo design" --aspect 1:1 --output ./logo.png
-
-# All options
-nanobanana "prompt" --aspect 16:9 --resolution 4k --output ./image.png
+```
+/nanobanana 猫がピアノを弾いている水彩画
 ```
 
-## Options
+### CLIから直接実行
 
-| Option | Description | Example |
-|--------|-------------|---------|
-| `--aspect <ratio>` | Aspect ratio | `1:1`, `16:9`, `9:16`, `4:3` |
-| `--resolution <r>` | Resolution | `4k`, `2k`, `1k` |
-| `--output <path>` | Output file path | `./image.png` |
-| `--api-key <key>` | Gemini API key | |
+```bash
+# 基本
+npx @yohei1996/nanobanana "A cat playing piano in watercolor style"
 
-## Output
+# 4K解像度
+npx @yohei1996/nanobanana "Landscape photo" --resolution 4k
 
-Images are saved to `~/nanobanana-images/` by default.
+# アスペクト比指定
+npx @yohei1996/nanobanana "Logo design" --aspect 1:1 --output ./logo.png
+```
+
+## オプション
+
+| オプション | 説明 | 例 |
+|-----------|------|-----|
+| `install [dir]` | スキルをインストール | `install .` |
+| `--aspect <ratio>` | アスペクト比 | `1:1`, `16:9`, `9:16`, `4:3` |
+| `--resolution <r>` | 解像度 | `4k`, `2k`, `1k` |
+| `--output <path>` | 出力先パス | `./image.png` |
+| `--api-key <key>` | Gemini APIキー | |
+
+## 出力先
+
+デフォルト: `~/nanobanana-images/`
 
 ## License
 

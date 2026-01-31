@@ -1,7 +1,7 @@
 {
-  "name": "@nishitsujiyouhei/nanobanana",
-  "version": "1.0.0",
-  "description": "Gemini Pro image generation CLI - High quality image generation with 4K support",
+  "name": "@yohei1996/nanobanana",
+  "version": "1.1.0",
+  "description": "Gemini Pro image generation CLI & Claude Code skill - High quality image generation with 4K support",
   "main": "src/index.js",
   "bin": {
     "nanobanana": "./bin/nanobanana.js"
@@ -15,16 +15,23 @@
     "image-generation",
     "ai",
     "cli",
-    "4k"
+    "4k",
+    "claude-code",
+    "skill"
   ],
-  "author": "nishitsujiyouhei",
+  "author": "yohei1996",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nishitsujiyouhei/biz-agent-skills-packages",
+    "url": "https://github.com/yohei1996/biz-agent-skills-packages",
     "directory": "packages/nanobanana"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "skills/"
+  ]
 }

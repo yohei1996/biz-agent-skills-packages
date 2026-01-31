@@ -1,5 +1,5 @@
 {
-  "name": "@nishitsujiyouhei/remotion-best-practices",
+  "name": "@yohei1996/remotion-best-practices",
   "version": "1.0.0",
   "description": "Best practices and rules for Remotion video creation - Claude Code skill package",
   "main": "src/index.js",
@@ -19,11 +19,11 @@
     "claude-code",
     "skill"
   ],
-  "author": "nishitsujiyouhei",
+  "author": "yohei1996",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nishitsujiyouhei/biz-agent-skills-packages",
+    "url": "https://github.com/yohei1996/biz-agent-skills-packages",
     "directory": "packages/remotion-best-practices"
   },
   "engines": {

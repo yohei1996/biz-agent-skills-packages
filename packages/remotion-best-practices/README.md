@@ -1,4 +1,4 @@
-# @nishitsujiyouhei/remotion-best-practices
+# @yohei1996/remotion-best-practices
 
 📹 Remotion Best Practices - Claude Code Skill Package
 
@@ -7,13 +7,13 @@ A comprehensive collection of best practices, patterns, and examples for Remotio
 ## Installation
 
 ```bash
-npm install @nishitsujiyouhei/remotion-best-practices
+npm install @yohei1996/remotion-best-practices
 ```
 
 Or install globally:
 
 ```bash
-npm install -g @nishitsujiyouhei/remotion-best-practices
+npm install -g @yohei1996/remotion-best-practices
 ```
 
 ## Usage

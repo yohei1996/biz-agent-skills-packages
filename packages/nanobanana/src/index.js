@@ -142,4 +142,60 @@ async function generateImage(options) {
   return savedPaths;
 }
 
-module.exports = { generateImage, getGeminiApiKey, MODELS };
+/**
+ * Install nanobanana skills to target directory
+ * @param {string} targetDir - Target directory (default: current working directory)
+ * @param {object} options - Installation options
+ * @param {boolean} options.force - Overwrite existing files
+ * @param {boolean} options.silent - Suppress output
+ */
+async function installSkills(targetDir = process.cwd(), options = {}) {
+  const { force = false, silent = false } = options;
+
+  const skillsSourceDir = path.join(__dirname, '..', 'skills', 'nanobanana');
+  const skillsTargetDir = path.join(targetDir, '.claude', 'skills', 'nanobanana');
+
+  // Check if source exists
+  if (!fs.existsSync(skillsSourceDir)) {
+    throw new Error(`Skills source not found: ${skillsSourceDir}`);
+  }
+
+  // Create target directory
+  if (!fs.existsSync(skillsTargetDir)) {
+    fs.mkdirSync(skillsTargetDir, { recursive: true });
+  }
+
+  // Copy files recursively
+  const copyDir = (src, dest) => {
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const srcPath = path.join(src, entry.name);
+      const destPath = path.join(dest, entry.name);
+
+      if (entry.isDirectory()) {
+        if (!fs.existsSync(destPath)) {
+          fs.mkdirSync(destPath, { recursive: true });
+        }
+        copyDir(srcPath, destPath);
+      } else {
+        if (!force && fs.existsSync(destPath)) {
+          if (!silent) console.log(`⏭️  Skipping (exists): ${destPath}`);
+          continue;
+        }
+        fs.copyFileSync(srcPath, destPath);
+        if (!silent) console.log(`✅ Installed: ${destPath}`);
+      }
+    }
+  };
+
+  copyDir(skillsSourceDir, skillsTargetDir);
+
+  if (!silent) {
+    console.log(`\n🍌 nanobanana skills installed to: ${skillsTargetDir}`);
+  }
+
+  return skillsTargetDir;
+}
+
+module.exports = { generateImage, getGeminiApiKey, MODELS, installSkills };

@@ -1,15 +1,38 @@
 #!/usr/bin/env node
-const { generateImage } = require('../src/index.js');
+const { generateImage, installSkills } = require('../src/index.js');
 
 const args = process.argv.slice(2);
+
+// Handle install command
+if (args[0] === 'install') {
+  const targetDir = args[1] || process.cwd();
+  const force = args.includes('--force') || args.includes('-f');
+
+  installSkills(targetDir, { force })
+    .then((installPath) => {
+      console.log('\n使用方法: Claude Codeでスキルを発火してください');
+      console.log('例: /nanobanana 猫がピアノを弾いている');
+    })
+    .catch((err) => {
+      console.error('Error:', err.message);
+      process.exit(1);
+    });
+  return;
+}
 
 if (args.length === 0 || args.includes('--help') || args.includes('-h')) {
   console.log(`
 🍌 Nano Banana - Gemini Pro Image Generator
 
-Usage: nanobanana <prompt> [options]
+Usage:
+  nanobanana install [dir]     Install skills to .claude/skills/
+  nanobanana <prompt>          Generate image directly
 
-Options:
+Install Options:
+  install [dir]    Install to specified directory (default: current dir)
+  --force, -f      Overwrite existing files
+
+Generate Options:
   --aspect <ratio>   Aspect ratio (1:1, 16:9, 9:16, 4:3, 3:4, etc.)
   --resolution <r>   Resolution (4k, 2k, 1k)
   --output <path>    Output file path
@@ -17,9 +40,12 @@ Options:
   --help, -h         Show this help message
 
 Examples:
-  nanobanana "A cat playing piano in watercolor style"
-  nanobanana "Landscape photo" --resolution 4k
-  nanobanana "Logo design" --aspect 1:1 --output ./logo.png
+  # Install skills
+  npx @yohei1996/nanobanana install
+
+  # Generate image directly
+  npx @yohei1996/nanobanana "A cat playing piano in watercolor style"
+  npx @yohei1996/nanobanana "Landscape photo" --resolution 4k
 
 Environment:
   GEMINI_API_KEY     Your Gemini API key
